@@ -1,7 +1,14 @@
 package main
 
-import "github.com/ademspr/go-class/api"
+import (
+	"log"
+
+	"github.com/ademspr/go-class/api"
+)
 
 func main() {
-	api.StartApi(8080)
+
+	log.Println("Teste do log")
+	a := api.Server{}
+	a.StartApi()
 }
