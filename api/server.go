@@ -12,14 +12,12 @@ import (
 )
 
 type Server struct {
-	config *config.Configuration
+	config config.ServerConfiguration
 	router *mux.Router
 }
 
-func (s *Server) StartApi() {
-	c := config.Configuration{}
-	c.Load()
-	s.config = &c
+func (s *Server) Start(c config.ServerConfiguration) {
+	s.config = c
 
 	r := mux.NewRouter().StrictSlash(true)
 	s.router = r
@@ -30,6 +28,7 @@ func (s *Server) StartApi() {
 }
 
 func (s *Server) run() {
+
 	log.Printf("Listen on port:%d\n", s.config.Port)
 
 	http_server := &http.Server{

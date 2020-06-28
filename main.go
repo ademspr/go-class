@@ -1,14 +1,18 @@
 package main
 
 import (
-	"log"
-
 	"github.com/ademspr/go-class/api"
+	"github.com/ademspr/go-class/config"
 )
 
 func main() {
+	c := config.Configuration{}
+	c.Load()
 
-	log.Println("Teste do log")
+	// l := logger.Logger{}
+	// l.Init(c.Log)
+	// defer l.Finish()
+
 	a := api.Server{}
-	a.StartApi()
+	a.Start(c.Server)
 }
